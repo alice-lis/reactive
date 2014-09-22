@@ -1,0 +1,7 @@
+KVO’s primary benefit is that you don’t have to implement your own scheme to send notifications every time a property changes. Its well-defined infrastructure has framework-level support that makes it easy to adopt—typically you do not have to add any code to your project. In addition, the infrastructure is already full-featured, which makes it easy to support multiple observers for a single property, as well as dependent values.
+
+“KVO Compliance” describes the difference between automatic and manual key-value observing, and how to implement both.
+
+Unlike notifications that use NSNotificationCenter, there is no central object that provides change notification for all observers. Instead, notifications are sent directly to the observing objects when changes are made. NSObject provides this base implementation of key-value observing, and you should rarely need to override these methods.
+
+“Key-Value Observing Implementation Details ” describes how key-value observing is implemented.

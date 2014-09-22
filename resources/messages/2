@@ -1,0 +1,7 @@
+To-many Relationships
+
+The keyPathsForValuesAffectingValueForKey: method does not support key-paths that include a to-many relationship. For example, suppose you have a Department object with a to-many relationship (employees) to a Employee, and Employee has a salary attribute. You might want the Department object have a totalSalary attribute that is dependent upon the salaries of all the Employees in the relationship. You can not do this with, for example, keyPathsForValuesAffectingTotalSalary and returning employees.salary as a key.
+
+There are two possible solutions in both situations:
+
+You can use key-value observing to register the parent (in this example, Department) as an observer of the relevant attribute of all the children (Employees in this example). You must add and remove the parent as an observer as child objects are added to and removed from the relationship (see “Registering for Key-Value Observing”). In the observeValueForKeyPath:ofObject:change:context: method you update the dependent value in response to changes, as illustrated in the following code fragment:

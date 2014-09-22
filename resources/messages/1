@@ -1,0 +1,13 @@
+To-one Relationships
+
+To trigger notifications automatically for a to-one relationship you should either override keyPathsForValuesAffectingValueForKey: or implement a suitable method that follows the pattern it defines for registering dependent keys.
+
+For example, the full name of a person is dependent on both the first and last names. A method that returns the full name could be written as follows:
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ %@",firstName, lastName];
+}
+An application observing the fullName property must be notified when either the firstName or lastName properties change, as they affect the value of the property.
+
+One solution is to override keyPathsForValuesAffectingValueForKey: specifying that the fullName property of a person is dependent on the lastName and firstName properties. Listing 1 shows an example implementation of such a dependency:
+

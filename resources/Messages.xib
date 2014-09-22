@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MessagesWindow">
@@ -9,6 +10,7 @@
                 <outlet property="contactsController" destination="0Hk-H0-19i" id="9FJ-cA-d6I"/>
                 <outlet property="contactsTable" destination="sEy-Ry-0g4" id="c2l-X4-Eu4"/>
                 <outlet property="messagesController" destination="8aN-MI-QYU" id="S6u-qg-z4Z"/>
+                <outlet property="web_view" destination="rN2-Jc-ZGt" id="AFl-5W-ajL"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -17,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="1070" height="751"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="1070" height="751"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -309,7 +311,7 @@
                                 <rect key="frame" x="491" y="0.0" width="531" height="668"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jb-ju-kKL">
+                                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jb-ju-kKL">
                                         <rect key="frame" x="27" y="636" width="484" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="qVU-8n-uzY">
@@ -321,7 +323,7 @@
                                             <binding destination="8aN-MI-QYU" name="value" keyPath="selection.sender" id="n7P-rW-oBv"/>
                                         </connections>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1g8-Jc-nYY">
+                                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1g8-Jc-nYY">
                                         <rect key="frame" x="27" y="604" width="484" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JyV-lh-ZaN">
@@ -333,41 +335,19 @@
                                             <binding destination="8aN-MI-QYU" name="value" keyPath="selection.subject" id="htx-Ss-4v1"/>
                                         </connections>
                                     </textField>
-                                    <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI1-HK-0ns" customClass="RFOverlayScrollView">
-                                        <rect key="frame" x="20" y="12" width="491" height="573"/>
+                                    <webView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rN2-Jc-ZGt">
+                                        <rect key="frame" x="27" y="20" width="484" height="564"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <clipView key="contentView" ambiguous="YES" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="ojp-JL-cRn">
-                                            <rect key="frame" x="0.0" y="0.0" width="476" height="573"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="JqH-Xb-M9s">
-                                                    <rect key="frame" x="0.0" y="0.0" width="476" height="573"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="476" height="573"/>
-                                                    <size key="maxSize" width="888" height="10000000"/>
-                                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="476" height="573"/>
-                                                    <size key="maxSize" width="888" height="10000000"/>
-                                                    <connections>
-                                                        <binding destination="8aN-MI-QYU" name="attributedString" keyPath="selection.body" id="OSe-9B-eNl"/>
-                                                    </connections>
-                                                </textView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="5O1-ka-qMQ">
-                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="YVl-ia-ZNS" customClass="RFOverlayScroller">
-                                            <rect key="frame" x="476" y="0.0" width="15" height="573"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
+                                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO">
+                                            <nil key="identifier"/>
+                                        </webPreferences>
+                                    </webView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="668" id="025-ZC-RKa"/>
+                                    <constraint firstItem="1g8-Jc-nYY" firstAttribute="width" secondItem="5jb-ju-kKL" secondAttribute="width" id="NLi-eL-ysY"/>
+                                    <constraint firstItem="rN2-Jc-ZGt" firstAttribute="width" secondItem="1g8-Jc-nYY" secondAttribute="width" id="O1f-ON-bDu"/>
+                                    <constraint firstItem="1g8-Jc-nYY" firstAttribute="top" secondItem="5jb-ju-kKL" secondAttribute="bottom" constant="10" id="lgC-b4-nSv"/>
                                     <constraint firstAttribute="width" constant="531" id="zM7-P2-WHg"/>
                                 </constraints>
                             </customView>
@@ -426,7 +406,7 @@
                 </subviews>
             </view>
         </window>
-        <arrayController objectClassName="messages" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="8aN-MI-QYU" userLabel="Messages Controller">
+        <arrayController objectClassName="Message" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="8aN-MI-QYU" userLabel="Messages Controller">
             <declaredKeys>
                 <string>sender</string>
                 <string>sent</string>
@@ -437,7 +417,7 @@
                 <binding destination="0Hk-H0-19i" name="contentArray" keyPath="selection.messages" id="kvT-NB-xkX"/>
             </connections>
         </arrayController>
-        <arrayController objectClassName="contacts" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="0Hk-H0-19i" userLabel="Contacts Controller">
+        <arrayController objectClassName="Contact" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="0Hk-H0-19i" userLabel="Contacts Controller">
             <declaredKeys>
                 <string>name</string>
                 <string>messages</string>

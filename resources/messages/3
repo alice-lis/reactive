@@ -1,0 +1,14 @@
+Receiving Notification of a Change
+
+When the value of an observed property of an object changes, the observer receives an observeValueForKeyPath:ofObject:change:context: message. All observers must implement this method.
+
+The observer is provided the object and key path that triggered the observer notification, a dictionary containing details about the change, and the context pointer that was provided when the observer was registered.
+
+The change dictionary entry NSKeyValueChangeKindKey provides information about the type of change that occurred. If the value of the observed object has changed, the NSKeyValueChangeKindKey entry returns NSKeyValueChangeSetting. Depending on the options specified when the observer was registered, the NSKeyValueChangeOldKey and NSKeyValueChangeNewKey entries in the change dictionary contain the values of the property before, and after, the change. If the property is an object, the value is provided directly. If the property is a scalar or a C structure, the value is wrapped in an NSValue object (as with key-value coding).
+
+If the observed property is a to-many relationship, the NSKeyValueChangeKindKey entry also indicates whether objects in the relationship were inserted, removed, or replaced by returning NSKeyValueChangeInsertion, NSKeyValueChangeRemoval, or NSKeyValueChangeReplacement, respectively.
+
+The change dictionary entry for NSKeyValueChangeIndexesKey is an NSIndexSet object specifying the indexes in the relationship that changed. If NSKeyValueObservingOptionNew or NSKeyValueObservingOptionOld are specified as options when the observer is registered, the NSKeyValueChangeOldKey and NSKeyValueChangeNewKey entries in the change dictionary are arrays containing the values of the related objects before, and after, the change.
+
+The example in Listing 2 shows the observeValueForKeyPath:ofObject:change:context: implementation for an inspector that reflects the old and new values of the property openingBalance, as registered in Listing 1.
+

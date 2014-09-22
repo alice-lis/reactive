@@ -17,6 +17,7 @@ Motion::Project::App.setup do |app|
   app.name = 'reactive'
   app.icon = 'icon.icns'
   
+  app.frameworks += ['WebKit']
   app.pods do
     pod 'RFOverlayScrollView'
     pod 'SORelativeDateTransformer'
